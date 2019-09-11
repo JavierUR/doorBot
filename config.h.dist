@@ -1,0 +1,8 @@
+#ifndef DoorBot_config
+#define DoorBot_config
+
+// ------- Telegram config --------
+#define BOT_TOKEN "{token}"  // your Bot Token (Get from Botfather)
+#define ADMIN_ID "{chat_id}" // Chat ID of the admin user or group
+
+#endif
