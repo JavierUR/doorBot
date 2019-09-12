@@ -4,7 +4,7 @@
 #include "config.h"
 #include "allowed.h"
 //Pins to use
-const int PinRele = D0;
+const int PinRele = D4;
 const int PinLed = 2;
 
 int long lt = 0;
@@ -31,8 +31,8 @@ WiFiClient clientUbi;
 void setup() {
   //Configure digital Pin
   pinMode(PinRele, OUTPUT);
-  digitalWrite(PinRele, LOW);
-  pinMode(PinLed, OUTPUT);
+  digitalWrite(PinRele, HIGH);
+  //pinMode(PinLed, OUTPUT);
   //Serial and WIFI connection
   Serial.begin(9600);
   WiFi.mode(WIFI_STA);
@@ -82,9 +82,9 @@ void loop() {
 
 //Activate door switch
 void openDoor() {
-  digitalWrite(PinRele, HIGH);
-  delay(500);
   digitalWrite(PinRele, LOW);
+  delay(300);
+  digitalWrite(PinRele, HIGH);
 }
 
 //Message to report connection
@@ -98,13 +98,8 @@ void sendConnectionReport() {
 }
 
 //Check if allowed ID
-int checkAllowed(String userID) {
-  for (int i = 0; i < whitelistN; i++) {
-    if (userID == allowedID[i]) {
-      return 1;
-    }
-  }
-  return 0;
+int checkAllowed(String &userID) {
+  return allowedID.count(userID);
 }
 //Manage new messages
 void handleNewMessages(int numNewMessages) {

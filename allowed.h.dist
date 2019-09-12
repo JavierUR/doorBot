@@ -1,8 +1,8 @@
 #ifndef DoorBot_allowed
 #define DoorBot_allowed
 
+#include <set>
 // ------- Telegram config --------
-const int whitelistN = N; //Number of id in allowedID
-String allowedID[] = {"USERID",...};
+std::set<String> allowedID = {"userID",...};
 
 #endif
